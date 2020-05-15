@@ -43,7 +43,6 @@ class HttpConnector
      */
     public function processTransaction($http_method, $endpoint, $data)
     {
-        //call internal request function
         return $this->request($http_method, $endpoint, $data);
     }
 
@@ -83,10 +82,6 @@ class HttpConnector
         curl_setopt($req, CURLOPT_SSL_VERIFYPEER, true);
         curl_setopt($req, CURLOPT_TIMEOUT, 30);
 
-        //test ssl3 (remember to set platform to 'ssltest')
-        //should no longer work after 01/01/2015
-        //curl_setopt($req, CURLOPT_SSLVERSION, 3);
-
         //set http method
         //default to GET if data is null
         //default to POST if data is not null
@@ -108,7 +103,6 @@ class HttpConnector
 
         //execute curl request
         $raw = curl_exec($req);
-
 
         if (false === $raw) { //make sure we got something back
             throw new ConnectorException(curl_error($req), -curl_errno($req));

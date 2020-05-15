@@ -307,7 +307,7 @@ class Payments
     {
         $data['payment_method'] = 'token';
         $data['token']['code'] = $token;
-        $data['token']['name'] = $data['name'] ?? '';
+        $data['token']['name'] = $data['billing']['name'] ?? '';
         $data['token']['complete'] = $complete;
 
         return $this->connector->processTransaction('POST', $this->endpoint->getBasePaymentsURL(), $data);
