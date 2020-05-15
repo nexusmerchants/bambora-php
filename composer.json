@@ -1,0 +1,29 @@
+{
+    "name": "nexusmerchants/bambora-php",
+    "description": "Bambora PHP API",
+    "type": "library",
+    "license": "MIT",
+    "version": "0.0.1",
+    "authors": [
+        {
+            "name": "Pavel Kulbakin",
+            "email": "p.kulbakin@gmail.com"
+        },
+        {
+			"name": "Kevin Saliba"
+	    },
+        {
+            "name": "Peter Harlacher",
+            "email": "peter@nexusmerchants.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2.5",
+        "ext-curl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "NexusMerchants\\Bambora\\": "src/"
+        }
+    }
+}
