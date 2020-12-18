@@ -108,6 +108,8 @@ class HttpConnector
             throw new ConnectorException(curl_error($req), -curl_errno($req));
         }
 
+        $info = curl_getinfo($req);
+
         //decode the result
         $res = json_decode($raw, true);
         if (is_null($res)) { //make sure the result is good to go
@@ -115,7 +117,7 @@ class HttpConnector
         }
 
         //check for return errors from the API
-        if (isset($res['code']) && 1 < $res['code'] && !($req['http_code'] >= 200 && $req['http_code'] < 300)) {
+        if (isset($res['code']) && 1 < $res['code'] && !($info['http_code'] >= 200 && $info['http_code'] < 300)) {
             throw new ApiException($res['message'], $res['code']);
         }
 
